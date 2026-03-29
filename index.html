@@ -9,23 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 /* ============================================================
-   DESIGN TOKENS — Citeline Design System
+   DESIGN TOKENS — Citeline Workspace Official
    ============================================================ */
 :root {
-  --color-brand-charcoal:    #3D3D3D;
-  --color-brand-cream:       #FAF9F5;
-  --color-brand-light-gray:  #E8E6DC;
-  --color-brand-mid-gray:    #9A9A9A;
-  --color-brand-orange:      #D97757;
-  --color-brand-sage:        #788C5D; /* New Green Token */
+  --brand-charcoal:    #3D3D3D;
+  --brand-cream:       #FAF9F5;
+  --brand-light-gray:  #E8E6DC;
+  --brand-mid-gray:    #9A9A9A;
+  --brand-orange:      #D97757;
+  --brand-sage:        #788C5D; /* Added Official Green */
   
-  --sky:          #87CEEB;
-  --text:         var(--color-brand-charcoal);
-  --muted:        var(--color-brand-charcoal); 
-  --orange:       var(--color-brand-orange);
-  --sage:         var(--color-brand-sage);
+  --sky:               #87CEEB;
+  --text:              var(--brand-charcoal);
+  --muted:             var(--brand-charcoal); /* High contrast for sky background */
+  --orange:            var(--brand-orange);
+  --sage:              var(--brand-sage);
   
   --r-xs: 8px;
+  --r-sm: 12px;
   --r-md: 18px;
   --r-lg: 24px;
   --r-xl: 30px;
@@ -45,19 +46,204 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAVIGATION */
+/* NAVIGATION - Tighter Logo Grouping */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   height: 64px; display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--space-4xl);
   background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--color-brand-light-gray);
+  border-bottom: 1px solid var(--brand-light-gray);
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 8px; /* Tighter spacing as requested */
+  display: flex; align-items: center; gap: 8px; /* Close proximity as requested */
   text-decoration: none; color: var(--text);
 }
 .nav-logo img { height: 28px; width: auto; }
 .nav-logo-text { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 
-/* HERO */
+/* HERO - ZINGAGE INSPIRED */
+.hero {
+  padding: 160px 20px 60px;
+  max-width: 1100px; margin: 0 auto; text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(120, 140, 93, 0.15); color: var(--sage);
+  padding: 8px 16px; border-radius: 100px; font-weight: 700; font-size: 14px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 24px;
+}
+.hero p {
+  font-size: 22px; max-width: 750px; margin: 0 auto 40px; opacity: 0.9;
+}
+
+/* BENTO GRID FEATURES */
+.bento-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
+.bento-grid {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
+}
+.bento-card {
+  background: #fff; border-radius: var(--r-lg); overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column;
+}
+.bento-card.large { grid-column: span 8; }
+.bento-card.small { grid-column: span 4; }
+.bento-card .img-wrapper { height: 380px; overflow: hidden; background: #eee; }
+.bento-card img { width: 100%; height: 100%; object-fit: cover; }
+.bento-card .content { padding: 40px; }
+.bento-card h3 { font-size: 28px; margin-bottom: 12px; }
+.bento-card p { color: var(--brand-mid-gray); font-size: 18px; }
+
+/* HOW IT WORKS SECTION */
+.section-white { background: #fff; padding: 100px 20px; color: var(--brand-charcoal); }
+.inner-wrap { max-width: 1100px; margin: 0 auto; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+.step-num { font-size: 48px; font-weight: 800; color: var(--brand-light-gray); margin-bottom: 10px; }
+
+/* SERVICEABLE FORM */
+.contact-wrap {
+  background: #fff; border-radius: var(--r-xl); padding: 80px;
+  display: flex; gap: 80px; align-items: center; margin-bottom: 100px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; opacity: 0.5; }
+input {
+  width: 100%; padding: 16px; border: 1px solid var(--brand-light-gray);
+  border-radius: var(--r-xs); font-size: 16px; font-family: inherit; outline-color: var(--orange);
+}
+.btn-primary {
+  background: var(--orange); color: #fff; border: none; padding: 18px 36px;
+  border-radius: var(--r-xs); font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none; display: inline-block;
+  text-align: center; transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+footer { padding: 60px 20px; text-align: center; opacity: 0.6; font-size: 14px; color: var(--brand-charcoal); }
+
+@media (max-width: 900px) {
+  .bento-card.large, .bento-card.small { grid-column: span 12; }
+  .contact-wrap { flex-direction: column; padding: 40px; gap: 40px; }
+  .grid-3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgQAAACsCAYAAA..." alt="Citeline Logo">
+    <span class="nav-logo-text">CITELINE HEALTH</span>
+  </a>
+  <div class="nav-links">
+    <a href="#early-access" class="btn-primary" style="padding:10px 24px; font-size:14px;">Get Started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">
+    <span style="color:var(--sage);">●</span> 94% Appeal Success Rate with Citeline AI
+  </div>
+  <h1>Prior Auth Peer-to-Peers,<br><span style="color:var(--orange)">Automated by AI.</span></h1>
+  <p>Our AI agent navigates phone trees, waits on hold, and handles clinical intake so you don't have to.</p>
+  <a href="#early-access" class="btn-primary" style="padding:22px 48px; font-size:20px; border-radius:12px;">Request Early Access</a>
+</section>
+
+<div class="bento-container">
+  <div class="bento-grid">
+    <div class="bento-card large">
+      <div class="img-wrapper">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwk..." alt="Citeline Dashboard">
+      </div>
+      <div class="content">
+        <h3>Live Call Dashboard</h3>
+        <p>Monitor AI conversations in real-time. View transcripts, clinical evidence cited, and approval status at a glance.</p>
+      </div>
+    </div>
+    
+    <div class="bento-card small" style="background: var(--brand-cream);">
+      <div class="content">
+        <div style="font-size:48px; margin-bottom:20px; color:var(--sage)">🛡️</div>
+        <h3 style="color:var(--sage)">"Won" Outcomes</h3>
+        <p>Trained on thousands of successful clinical appeals to ensure your patients get the care they need without administrative friction.</p>
+      </div>
+    </div>
+
+    <div class="bento-card small">
+      <div class="content">
+        <div style="font-size:48px; margin-bottom:20px;">⏳</div>
+        <h3>Zero Hold Time</h3>
+        <p>We handle the 45-minute holds with insurance reviewers. You only get notified when a doctor is live on the line.</p>
+      </div>
+    </div>
+
+    <div class="bento-card large">
+      <div class="img-wrapper">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgQAAACsCAY..." alt="Clinical Workflow">
+      </div>
+      <div class="content">
+        <h3>Patient Safety First</h3>
+        <p>Stop delays in chemotherapy and critical surgeries. Citeline removes the #1 cause of physician burnout and treatment delays.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section-white">
+  <div class="inner-wrap">
+    <h2 style="font-size:42px; text-align:center; letter-spacing:-0.03em;">How Citeline Works</h2>
+    <div class="grid-3">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 style="margin-bottom:12px;">Quick Intake</h3>
+        <p style="color:var(--brand-mid-gray);">Dictate patient history or upload the denial letter. Our AI parses the medical necessity requirements instantly.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 style="margin-bottom:12px;">AI Call Agent</h3>
+        <p style="color:var(--brand-mid-gray);">Citeline dials the insurer, navigates the complex IVR menus, and remains on hold until a reviewer is available.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 style="margin-bottom:12px;">Live Handoff</h3>
+        <p style="color:var(--brand-mid-gray);">When the medical reviewer joins, Citeline pings you. Join for 60 seconds to provide the final clinical sign-off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inner-wrap" id="early-access" style="margin-top:100px;">
+  <div class="contact-wrap">
+    <div style="flex:1;">
+      <div class="hero-badge" style="background:var(--brand-cream); color:var(--orange);">Limited Beta Program</div>
+      <h2 style="font-size:48px; line-height:1.1; margin-bottom:20px; letter-spacing:-0.04em;">Join the waitlist for<br>June 15th launch.</h2>
+      <p style="font-size:20px; color:var(--brand-mid-gray);">Secure your spot. Reduce administrative overhead by 90% and reclaim your clinical time.</p>
+    </div>
+    <div style="flex:1; max-width:450px;">
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Dr. Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label>Practice Email</label>
+          <input type="email" name="email" placeholder="jane@practice.com" required>
+        </div>
+        <div class="form-group">
+          <label>NPI Number</label>
+          <input type="text" name="npi" placeholder="1234567890" required>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;">Reserve My Spot</button>
+      </form>
+      <p style="font-size:12px; opacity:0.5; text-align:center; margin-top:15px;">Secure & HIPAA Compliant Intake</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Citeline Health. Physician-Led AI for Healthcare. <br>
+  Designed for clinical efficiency.
+</footer>
+
+</body>
+</html>
